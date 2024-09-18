@@ -1,0 +1,12 @@
+warehouse:
+  outputs:
+    dev:
+      dbname: demo_db
+      host: localhost
+      password: "{{ env_var('DBT_PASSWORD') }}"
+      port: 5432
+      schema: warehouse
+      threads: 1
+      type: postgres
+      user: "{{ env_var('DBT_USER') }}"
+  target: dev

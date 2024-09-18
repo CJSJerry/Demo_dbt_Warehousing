@@ -1,0 +1,27 @@
+services:
+  postgres:
+    image: postgres:12-alpine
+    restart: always
+    environment:
+      POSTGRES_USER: demo_user
+      POSTGRES_PASSWORD: demo_pw
+      POSTGRES_DB: demo_db
+    volumes:
+      - ./data/init.sql:/docker-entrypoint-initdb.d/init.sql
+      - demodbtdata:/var/lib/postgresql/data
+    ports:
+      - ${POSTGRES_PORT:-5432}:5432
+  pgadmin:
+    image: dpage/pgadmin4:6
+    restart: always
+    environment:
+      PGADMIN_DEFAULT_EMAIL: demo_user@test.com
+      PGADMIN_DEFAULT_PASSWORD: demo_pw
+    volumes:
+      - ./data/servers.json:/pgadmin4/servers.json
+    ports:
+      - ${PGADMIN_PORT:-8080}:80
+    depends_on:
+      - postgres
+volumes:
+  demodbtdata: {}

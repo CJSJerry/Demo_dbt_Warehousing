@@ -1,0 +1,67 @@
+version: 2
+
+sources:
+  - name: source_data
+    schema: public
+    tables:
+      - name: country
+        description: "Table containing country details."
+        columns:
+          - name: id
+            description: "Unique identifier for each country."
+          - name: name
+            description: "Name of the country."
+          - name: region
+            description: "Geographical region of the country."
+
+      - name: customer
+        description: "Table containing customer information."
+        columns:
+          - name: id
+            description: "Unique identifier for each customer."
+          - name: name
+            description: "Name of the customer."
+          - name: email
+            description: "Email address of the customer."
+          - name: country_id
+            description: "Foreign key linking to the country table."
+          - name: premium_customer
+            description: "Indicates if the customer is premium (yes/no)."
+
+      - name: product_category
+        description: "Table containing product category details."
+        columns:
+          - name: id
+            description: "Unique identifier for each product category."
+          - name: name
+            description: "Name of the product category."
+
+      - name: product
+        description: "Table containing product details."
+        columns:
+          - name: id
+            description: "Unique identifier for each product."
+          - name: reference
+            description: "Product reference code."
+          - name: name
+            description: "Name of the product."
+          - name: category_id
+            description: "Foreign key linking to the product_category table."
+          - name: price
+            description: "Price of the product."
+
+      - name: installation
+        description: "Table containing installation details."
+        columns:
+          - name: id
+            description: "Unique identifier for each installation."
+          - name: name
+            description: "Name or identifier of the installation."
+          - name: description
+            description: "Description of the installation."
+          - name: product_id
+            description: "Foreign key linking to the product table."
+          - name: customer_id
+            description: "Foreign key linking to the customer table."
+          - name: installation_date
+            description: "Date when the installation took place."

@@ -1,0 +1,95 @@
+
+version: 2
+
+models:
+  - name: dim_customers
+    description: "Dimension table for customers"
+    columns:
+      - name: customer_id
+        description: "Unique identifier for the customer"
+        data_tests:
+          - unique
+          - not_null
+      - name: customer_name
+        description: "Name of the customer"
+      - name: email
+        description: "Email address of the customer"
+      - name: country_id
+        description: "Identifier for the customer's country"
+      - name: country_name
+        description: "Name of the customer's country"
+      - name: region
+        description: "Region of the customer's country"
+      - name: is_premium_customer
+        description: "Indicates if the customer is premium"
+        data_tests:
+          - accepted_values:
+              values: [True, False]
+
+  - name: dim_products
+    description: "Dimension table for products"
+    columns:
+      - name: product_id
+        description: "Unique identifier for the product"
+        data_tests:
+          - unique
+          - not_null
+      - name: product_reference
+        description: "Reference code for the product"
+      - name: product_name
+        description: "Name of the product"
+      - name: price
+        description: "Price of the product"
+      - name: category_id
+        description: "Identifier for the product's category"
+      - name: category_name
+        description: "Name of the product's category"
+
+  - name: dim_dates
+    description: "Dimension table for dates"
+    columns:
+      - name: date_key
+        description: "Unique identifier for the date"
+        data_tests:
+          - unique
+          - not_null
+      - name: date
+        description: "The date"
+      - name: day
+        description: "Day part of the date"
+      - name: month
+        description: "Month part of the date"
+      - name: quarter
+        description: "Quarter of the year"
+      - name: year
+        description: "Year part of the date"
+
+  - name: dim_installation_details
+    description: "Dimension table for installation details"
+    columns:
+      - name: installation_detail_id
+        description: "Unique identifier for the installation detail"
+        data_tests:
+          - unique
+          - not_null
+      - name: installation_name
+        description: "Name of the installation"
+      - name: description
+        description: "Description of the installation detail"
+
+  - name: fact_installations
+    description: "Fact table for installations"
+    columns:
+      - name: installation_id
+        description: "Unique identifier for the installation"
+        data_tests:
+          - unique
+          - not_null
+      - name: product_id
+        description: "Identifier for the product involved in the installation"
+      - name: customer_id
+        description: "Identifier for the customer who received the installation"
+      - name: installation_date_key
+        description: "Identifier for the date of the installation"
+      - name: installation_detail_id
+        description: "Identifier for the installation detail"
