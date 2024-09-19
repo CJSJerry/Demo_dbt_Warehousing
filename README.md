@@ -24,23 +24,15 @@ Please see the [structure.md](structure.md) file for the full directory structur
 
 ### Part 1: Connect to the database
 1. Create an .env file with the url to the database: \
-`DATABASE_URL=postgresql://{username}:{password}@host.docker.internal:5432/demo_db` \
+`DATABASE_URL=postgresql://{username}:{password}@localhost:5432/demo_db` \
 Replace the placeholders with your own postgres credentials 
-- Credentials will not be found in documentations in real-life scenarios, but for the purpose of this demo, simply copy-paste: `DATABASE_URL=postgresql://demo_user:demo_pw@host.docker.internal:5432/demo_db`
+- Credentials will not be found in documentations in real-life scenarios, but for the purpose of this demo, simply copy-paste: `DATABASE_URL=postgresql://demo_user:demo_pw@localhost:5432/demo_db`
 2. Run `docker-compose up -d` to start the database
 3. Go to http://localhost:8080 and login with your credentials to access pgadmin 
 - For the purpose of this demo, use the following pgadmin credentials as given in `docker-compose.yml`: \
 `email: demo_user@test.com` \
 `password: demo_pw`
-4. Set up the server on pgadmin by going to the left-panel, right-clicking the "Servers" node and select "Create" -> "Server" \
-Then, in the "Connection" tab, use the following configuration: \
-`Host name/address: postgres` \
-`Port: 5432` \
-`Username: demo_user` \
-`Password: demo_pw` 
-- (These postgres credentials follow `docker-compose.yml`, and should not be documented in real-life scenarios)
-- (This setup only needs to be done when setting up the database for the first time)
-5. Check out the 5 pre-existing tables aunder the "demo_db" database > Schemas > Public > Tables
+4. Check out the 5 pre-existing tables by accessing the side panel: Servers > Demo Inc > Databases > demo_db > Schemas > Public > Tables
 
     <img src="./assets/database.png" alt="Database Image" width="800"/>
 
